@@ -1,4 +1,4 @@
-<h1> README <h1>
+# README
 
 Extractor benutzt python Wikipedia API wrapper.
 

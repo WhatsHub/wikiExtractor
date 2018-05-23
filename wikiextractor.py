@@ -12,4 +12,7 @@ content = p.content
 wordlist = unique_list(content.split(" "))
 content = "\n".join(wordlist)
 
-print(content)
+file = open("wordlist.txt", "w")
+
+file.write(content.encode("utf-8"))
+file.close

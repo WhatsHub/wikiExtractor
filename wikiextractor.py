@@ -8,16 +8,16 @@ def unique_list(l):
 def remove_specials(string):
     return ''.join(c for c in string if c.isalnum())
     
-def pullwiki():
+def pullwiki(query, lang):
 
     import wikipedia
 
     # set the language of wikipedia
-    wikipedia.set_lang('de')
+    wikipedia.set_lang(lang)
 
     # present options if page was not found or disambiguation page
     try:
-        p = wikipedia.page("Archer (Zeichentrickserie)")
+        p = wikipedia.page(query)
     except wikipedia.exceptions.DisambiguationError as e:
         print e.options
 
@@ -50,7 +50,11 @@ def pullwiki():
 # main routine
 if __name__ =='__main__':
 
-    wl = pullwiki()
+    import sys
+
+    query = sys.argv[1]
+    lang = sys.argv[2]
+    wl = pullwiki(query, lang)
 
     # write the wordlist to a file
     file = open("wordlist.txt", "w")

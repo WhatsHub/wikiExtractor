@@ -19,7 +19,7 @@ def pullwiki(query, lang):
     try:
         p = wikipedia.page(query)
     except wikipedia.exceptions.DisambiguationError as e:
-        print e.options
+        print(e.options)
 
     # print the url and title of the article
     print(p.url)
@@ -48,9 +48,12 @@ def pullwiki(query, lang):
     return content
 
 # main routine
-if __name__ =='__main__':
-
+def main():
     import sys
+
+    if len(sys.argv) < 2:
+        print("ERROR: Too few arguments!")
+        return
 
     query = sys.argv[1]
     lang = sys.argv[2]
@@ -59,5 +62,7 @@ if __name__ =='__main__':
     # write the wordlist to a file
     file = open("wordlist.txt", "w")
 
-    file.write(wl.encode("utf-8"))
+    file.write(wl)
     file.close
+
+if __name__ =='__main__':main()
